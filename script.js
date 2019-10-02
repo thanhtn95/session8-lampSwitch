@@ -1,4 +1,3 @@
-
 let display = document.getElementById("display");
 
 function ElectricLamp(status) {
@@ -10,32 +9,33 @@ function ElectricLamp(status) {
         this.status = false;
     }
     this.turnOn = function () {
-        this.status =true;
+        this.status = true;
     }
 }
 
-function SwitchButton(status,lamp) {
+function SwitchButton(status, lamp) {
     this.status = status;
     this.lamp = lamp;
     this.connectToLamp = function () {
         this.status = this.lamp.getStatus();
-        if(this.status){
+        if (this.status) {
             display.innerText = "Lamp Is On";
-        }else{
-            display.innerText ="Lamp Is Off";
+        } else {
+            display.innerText = "Lamp Is Off";
         }
     }
-    this.switchOn =function () {
+    this.switchOn = function () {
         this.status = true;
         this.lamp.turnOn();
         this.connectToLamp();
     }
 
-    this.switchOff =function () {
+    this.switchOff = function () {
         this.status = false;
         this.lamp.turnOff();
         this.connectToLamp();
     }
 }
+
 let lamp = new ElectricLamp(false);
-let switchbtn = new SwitchButton(true,lamp);
+let switchbtn = new SwitchButton(true, lamp);
